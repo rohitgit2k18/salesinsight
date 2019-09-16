@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:SalesInsight.Views"
+       x:Class="SalesInsight.AppShell">
+
+     <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    
+    
+    
+     <FlyoutItem Title="Browse" Icon="tab_feed.png">
+       <Tab Title="Browse" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        </Tab>
+         <Tab Title="About1" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        </Tab>
+         <Tab Title="About2" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        </Tab>
+         <Tab Title="About3" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        </Tab> 
+    </FlyoutItem>
+
+    <ShellContent x:Name="aboutItem"
+                  Title="About"
+                  Icon="tab_about.png"
+                  ContentTemplate="{DataTemplate local:DashBoard}" />
+
+    
+    <MenuItem Text="Random"
+              IconImageSource="tab_about.png"
+               />
+    <MenuItem Text="Help"
+              IconImageSource="tab_about.png"
+              CommandParameter="https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />
+</Shell>
