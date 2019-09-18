@@ -5,11 +5,12 @@ using Xamarin.Forms;
 
 namespace SalesInsight
 {
-    public partial class AppShell : Shell
+    public partial class AppShell : Xamarin.Forms.Shell
     {
         public AppShell()
         {
             InitializeComponent();
         }
+
     }
 }

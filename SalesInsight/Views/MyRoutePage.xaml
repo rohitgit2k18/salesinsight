@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="A minha rota"
+             x:Class="SalesInsight.Views.MyRoutePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="baseline_more_vert_white_18dp.png"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid x:Name="Rootlayout" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.45*"/>
+                <RowDefinition Height="0.55*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Padding="10,5">
+                
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="#2196F3">
+                    
+                </Grid>
+                <Grid Grid.Row="0">
+
+                </Grid>
+                <Grid Grid.Row="0">
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -7,10 +7,13 @@ namespace SalesInsight
 {
     public partial class App : Application
     {
+        public static  NavigationPage NavigationPage { get;  set; }
         public App()
         {
             InitializeComponent();
-
+            //NavigationPage = new NavigationPage(new LoginPage());
+            //MainPage = NavigationPage;
+            // MainPage = new AppShell();
             MainPage = new LoginPage();
         }
 

@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:SalesInsight.Views"
+       xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
        x:Class="SalesInsight.AppShell">
 
      <Shell.Resources>
@@ -21,38 +22,179 @@
             <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
+    <!-- Template for FlyoutHeader -->
+    <!-- Not required, as the FlyoutHeader is set above -->
+    <Shell.FlyoutHeaderTemplate>
+   
+    <DataTemplate>
+            <Grid HeightRequest="250" BackgroundColor="Black" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Aspect="AspectFill" 
+                       Source="headerbg.jpg" 
+                       Grid.ColumnSpan="2"
+                        />
+                </Grid>
+                <Grid Grid.Row="0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalOptions="Start" BackgroundColor="Transparent" VerticalOptions="End" Padding="20,0,0,10">
+                        <abstractions:CircleImage
+                            Source="https://pbs.twimg.com/profile_images/1174080109399224322/Yc0k4Bqe_400x400.jpg"
+                            Aspect="AspectFill"
+                            WidthRequest="120"
+                            HeightRequest="120"
+                            BorderColor="Gray"
+                            BorderThickness="1"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                             />
+                    </Grid>
+                    <Grid Grid.Row="1" Padding="20,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Label
+                            Text="davidortino@hotmail.com"
+                            LineBreakMode="NoWrap"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            FontSize="Medium"
+                             FontAttributes="Bold"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="CenterAndExpand"
+                            />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <ImageButton Source="baseline_arrow_drop_down_white_18dp.png" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>            
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <!-- Template each FlyoutItem -->
+        <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid HeightRequest="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Icon}"
+                       Margin="5"
+                       HeightRequest="30" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontSize="Large"
+                       TextColor="Gray"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center" /> 
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!-- Template each MenuItem -->
+        <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid HeightRequest="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Icon}"
+                       Margin="5"
+                       HeightRequest="30" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontSize="Large"
+                       VerticalTextAlignment="Center" /> 
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
 
     
     
-    
-     <FlyoutItem Title="Browse" Icon="tab_feed.png">
-       <Tab Title="Browse" Icon="tab_feed.png">
+    <!--  SideMenu and Tab pages-->
+
+
+
+    <!--<FlyoutItem Route="Login" x:Name="LoginShell">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </FlyoutItem>-->
+
+
+
+
+    <FlyoutItem x:Name="LoginShell" Route="main" Title="Painel de controlo" Icon="baseline_dashboard_1_black_18dp.png">
+        <Tab Title="Painel de controlo" Icon="baseline_dashboard_1_black_18dp.png">
             <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
         </Tab>
-        <Tab Title="About" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        <Tab Title="A minha rota" Icon="baseline_event_available_black_18dp.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MyRoutePage}" />
         </Tab>
-         <Tab Title="About1" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        <Tab Title="Fotografias" Icon="baseline_insert_photo_black_18dp.png">
+            <ShellContent ContentTemplate="{DataTemplate local:PhotographsPage}" />
         </Tab>
-         <Tab Title="About2" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        <Tab Title="Rotas" Icon="baseline_map_black_18dp.png">
+            <ShellContent ContentTemplate="{DataTemplate local:RoutesPage}" />
         </Tab>
-         <Tab Title="About3" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate local:DashBoard}" />
+        <Tab Title="Sincronizar" Icon="outline_rotate_right_black_18dp.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SynchronizePage}" />
         </Tab> 
     </FlyoutItem>
 
-    <ShellContent x:Name="aboutItem"
-                  Title="About"
-                  Icon="tab_about.png"
-                  ContentTemplate="{DataTemplate local:DashBoard}" />
-
+    <!--<MenuItem Text="Informação pessoal"
+              IconImageSource="baseline_person_black_18dp.png"
+               />-->
+    <FlyoutItem Title="Informação pessoal" Icon="baseline_person_black_18dp.png">
+        <ShellContent ContentTemplate="{DataTemplate local:PersonalInformationPage}" />
+    </FlyoutItem>
     
-    <MenuItem Text="Random"
-              IconImageSource="tab_about.png"
+    <!--<MenuItem Text="Produtos"
+              IconImageSource="baseline_toc_black_18dp.png"
+               />-->
+    
+    <FlyoutItem Title="Produtos" Icon="baseline_toc_black_18dp.png">
+        <ShellContent ContentTemplate="{DataTemplate local:ProductsPage}" />
+    </FlyoutItem>
+    
+    <!--<MenuItem Text="Registo de horas"
+              IconImageSource="baseline_watch_later_black_18dp.png"
+               />-->
+    
+    <FlyoutItem Title="Registo de horas" Icon="baseline_watch_later_black_18dp.png">
+        <ShellContent ContentTemplate="{DataTemplate local:TimeRecordingPage}" />
+    </FlyoutItem>
+
+    <MenuItem />
+    
+    <ShellContent x:Name="Agenda"
+                  Title="Agenda"
+                  Icon="baseline_date_range_black_18dp.png"
+                  ContentTemplate="{DataTemplate local:SchedulePage}" />
+   
+    
+    <FlyoutItem Title="notificações" Icon="baseline_notifications_active_black_18dp.png">
+        <ShellContent ContentTemplate="{DataTemplate local:NotificationsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Definições" Icon="baseline_setting_black_18dp.png">
+        <ShellContent ContentTemplate="{DataTemplate local:DefinitionsPage}" />
+    </FlyoutItem>
+    <!--<MenuItem Text="notificações"
+              IconImageSource="baseline_notifications_active_black_18dp.png"
                />
-    <MenuItem Text="Help"
-              IconImageSource="tab_about.png"
-              CommandParameter="https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />
+    <MenuItem Text="Definições"
+              IconImageSource="baseline_setting_black_18dp.png"
+              />-->
 </Shell>
