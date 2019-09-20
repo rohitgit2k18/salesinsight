@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SalesInsight"
+              xmlns:contros="clr-namespace:SalesInsight.CustomControls" 
+             
              mc:Ignorable="d"
              Title="A minha rota"
              x:Class="SalesInsight.Views.MyRoutePage">
@@ -16,22 +19,167 @@
                 <RowDefinition Height="0.55*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Padding="10,5">
-                
+                <ListView Margin="30,20,30,0">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:Data}">
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="direction.png" DirectionLabel="direções"  ValidImage="baseline_check_circle_outline_green_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_check_circle_outline_green_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_check_circle_outline_green_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_check_circle_outline_green_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_check_circle_outline_green_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                            <local:Data Title="CNT Barreo" SubTitle="Barreo"  DirectionImage="" DirectionLabel=""  ValidImage="baseline_cancel_red_18dp.png" />
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <StackLayout Spacing="2">
+                                            <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                            <Label Text="{Binding SubTitle}" />
+                                        </StackLayout>
+                                    </Grid>
+                                    <Grid Grid.Column="1" HorizontalOptions="EndAndExpand">
+                                        <StackLayout Orientation="Horizontal" Spacing="50">
+                                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                                <Image VerticalOptions="Center"  Source="{Binding DirectionImage}"/>
+                                                <Label VerticalOptions="Center" Text="{Binding DirectionLabel}" />
+                                            </StackLayout>
+                                            <Image Source="{Binding ValidImage}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    <!--<Label Text="{Binding Name}" FontAttributes="Bold" />
+                                    <Label Grid.Column="1" Text="{Binding Age}" />
+                                    <Label Grid.Column="2" Text="{Binding Location}" HorizontalTextAlignment="End" />-->
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" BackgroundColor="#2196F3">
-                    
+                <Grid Grid.Row="0" BackgroundColor="#2196F3" ColumnSpacing="80">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Button Text="Preparação" TextColor="White" WidthRequest="200" BorderColor="White" VerticalOptions="Center" HorizontalOptions="End" BorderWidth="2" BackgroundColor="Transparent" FontSize="Medium" Margin="10"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button Text="Visitar" BorderColor="White" TextColor="White" WidthRequest="200" VerticalOptions="Center"  HorizontalOptions="Start"  BorderWidth="2" BackgroundColor="Transparent" FontSize="Medium" Margin="10"/>
+                    </Grid>
                 </Grid>
-                <Grid Grid.Row="0">
-
+                <Grid Grid.Row="1">
+                    <contros:SegmentedBarControl SelectedItemChanged="Handle_SelectedItemChanged" 
+                             x:Name="segment" 
+                             AutoScroll="true"
+                                                 WidthRequest="150" HeightRequest="50"
+                             TextColor="Gray" 
+                             SelectedTextColor="Purple"
+                             SelectedLineColor="Purple"/>
                 </Grid>
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="2" x:Name="XFGridData" Margin="20,20,20,5" IsVisible="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Label Text="Morada" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                            <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="House Number 123" TextColor="Gray" PlaceholderColor="Gray"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Grid.Row="1" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Label Text="Codigo Postal" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="3030" TextColor="Gray" PlaceholderColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Label Text="Localidade" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold"/>
+                                <Entry HorizontalOptions="FillAndExpand" Placeholder="Coambra" VerticalOptions="Center" TextColor="Gray" PlaceholderColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Label Text="Coordenadas GPS" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackLayout Orientation="Horizontal"  Spacing="20">
+                                <Label Text="Latitude" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="43.4567" TextColor="Gray" PlaceholderColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Label Text="Longitude" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="43.6788" TextColor="Gray" PlaceholderColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
 
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Label Text="credenciação" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="43.4567" TextColor="Gray" PlaceholderColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Label Text="N de checkouts" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="10" TextColor="Gray" PlaceholderColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Label Text="observações" VerticalOptions="Center" TextColor="Black" FontAttributes="Bold"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <StackLayout Orientation="Vertical" >
+                            <Label Text="Escreva algo" VerticalOptions="Start" TextColor="Black" FontAttributes="Bold"/>
+                            <Editor HorizontalOptions="FillAndExpand"  Placeholder="10" TextColor="Gray" PlaceholderColor="Gray"/>
+                        </StackLayout>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

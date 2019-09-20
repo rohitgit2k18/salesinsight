@@ -17,7 +17,17 @@ namespace SalesInsight.Views
 
         private  void Button_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new AppShell();
+            string userName = xfEntUserName.Text;
+            string password = xfEntPassword.Text;
+            if(string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
+            {
+                DisplayAlert("Info", "Please type something in  user and password filed !", "OK");
+            }
+            else
+            {
+                App.Current.MainPage = new AppShell();
+            }
+            
         }
     }
 }

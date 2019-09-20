@@ -8,5 +8,6 @@
         <ToolbarItem IconImageSource="baseline_more_vert_white_18dp.png"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <Label Text="Welcome to DashBoard!" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="Center"/>
     </ContentPage.Content>
 </ContentPage>

@@ -19,12 +19,12 @@
                         <Image Source="outline_perm_identity_white_18dp.png" />
                         <Label Text="Utilizador" TextColor="White"  FontSize="40"/>
                     </StackLayout>
-                    <Entry WidthRequest="400" Placeholder="Type Something" PlaceholderColor="Black"/>
+                    <Entry WidthRequest="400" x:Name="xfEntUserName" Placeholder="Type Something" PlaceholderColor="Black"/>
                     <StackLayout Padding="-50,0,0,0" Orientation="Horizontal" Spacing="20">
                         <Image Source="outline_lock_white_18dp.png"/>
                         <Label Text="Palavra Passe" TextColor="White"  FontSize="40"/>
                     </StackLayout>
-                    <Entry WidthRequest="400" Placeholder="Type Something" IsPassword="True" PlaceholderColor="Black"/>
+                    <Entry WidthRequest="400" Placeholder="Type Something" x:Name="xfEntPassword" IsPassword="True" PlaceholderColor="Black"/>
                 </StackLayout>
             </Grid>
             <Grid Grid.Row="2" >

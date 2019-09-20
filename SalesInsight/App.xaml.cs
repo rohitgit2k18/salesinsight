@@ -8,6 +8,7 @@ namespace SalesInsight
     public partial class App : Application
     {
         public static  NavigationPage NavigationPage { get;  set; }
+        public static double dpi;
         public App()
         {
             InitializeComponent();

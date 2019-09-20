@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:SalesInsight.Views"
        xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+       Shell.TabBarIsVisible="True"
        x:Class="SalesInsight.AppShell">
 
      <Shell.Resources>
@@ -150,7 +151,7 @@
         </Tab>
         <Tab Title="Sincronizar" Icon="outline_rotate_right_black_18dp.png">
             <ShellContent ContentTemplate="{DataTemplate local:SynchronizePage}" />
-        </Tab> 
+        </Tab>
     </FlyoutItem>
 
     <!--<MenuItem Text="Informação pessoal"
